@@ -12,10 +12,10 @@ console.table(produtos)
 const array = new Array ()
 
 // -- Precisei declarar fora da função e com let porque o JS reclamou.
-let productId
-let findingId  
-let itemsInMyShoppingBag
-let promoCode
+let productId // Id do produto
+let findingId  // Encontrando Id
+let qtyOfItems // Quantidade de Itens
+let promoCode // Cupom de desconto
 
 // -- Função de compra que valida os pedidos
 const shopping = () => {
@@ -34,20 +34,20 @@ const shopping = () => {
     }
 
    
-    itemsInMyShoppingBag = parseInt(readline.question('Digite a quantidade de produtos que gostaria de adquirir: '))
+    qtyOfItems = parseInt(readline.question('Digite a quantidade de produtos que gostaria de adquirir: '))
 
     // -- Validando se a quantidade digitada é válida
     for (i = 0; i < 1000; i++) {
-        if (itemsInMyShoppingBag > 0) {
+        if (qtyOfItems > 0) {
             break;
         } else {
-            itemsInMyShoppingBag = parseInt(readline.question('Digite uma quantidade válida: '))
+            qtyOfItems = parseInt(readline.question('Digite uma quantidade válida: '))
         }
     }
 
     // -- Adicionando os produtos
-    const productsInMyBag = { ...findingId, quantidade: itemsInMyShoppingBag} 
-    array.push(productsInMyBag) 
+    const productsInMyCart = { ...findingId, quantidade: qtyOfItems} 
+    array.push(productsInMyCart) 
 
     // -- Verificando se desejar comprar mais
     const continueShopping = readline.question('Deseja inserir mais algum produto no carrinho? (Digite S ou N): ')
@@ -107,11 +107,11 @@ console.log(`Valor do desconto: R$ ${discount.toFixed(2)}`)
 
 // -- Calculando o total com desconto
 const total = purchase.subtotal - discount
-console.log(`Valor total: R$ ${total.toFixed(2)}`)
+console.log(`Valor total sem frente: R$ ${total.toFixed(2)}`)
 
 // -- Adicionando o frete
-const tax = total + 5
-console.log(`Esse mês estamos com frete fixo de apenas R$ 5,00! Seu pedido fica em R$ ${tax.toFixed(2)}`)
+const shipping = total + 5
+console.log(`Esse mês estamos com frete fixo de apenas R$ 5,00! Seu pedido fica em R$ ${shipping.toFixed(2)}`)
 
 
 
